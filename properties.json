@@ -1,0 +1,26 @@
+{
+	"port": 8080,
+	"logLevel": 0,
+	"database": {
+		"url": "http://localhost:5984",
+		"solarData": "solar_data"
+	},
+	"client":{
+		"graphColor": {
+			"module1": ["#f00", "#0f0", "#00f"],
+			"module2": ["#f22", "#2f2", "#22f"],
+			"module3": ["#f44", "#4f4", "#44f"],
+			"sensorSolar": ["yellow"]
+		}
+	},
+	"admin": {
+		"password": "21232f297a57a5a743894a0e4a801fc3",
+		"active": true
+	},
+	"dataPath": "./data/",
+	"showClientUpdates": false,
+	"logPropertiesChange": true,
+	"logAdminLoginFail": true,
+	"logAdminLoginSuccess": true,
+	"logAdminLogout": true
+}

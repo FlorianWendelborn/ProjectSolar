@@ -1,0 +1,98 @@
+body{
+	background-color: darkgrey;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+#canvas {
+	border: 1px solid black;
+	margin: 10px;
+}
+
+/* Toolbar Styles */
+#toolbar {
+	background-color: black;
+	height: 24px;
+	position: fixed;
+	z-index: 10;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+}
+.toolbarItem {
+	float: left;
+	height: 16px;
+	width: 16px;
+	padding: 4px;
+}
+.toolbarItem:hover {
+	background-color: #444;
+}
+.toolbarItemActive {
+	background-color: #eee !important;
+}
+
+/* Other Styles */
+#detailviewHeading {
+	background-color: #41A2CC;
+	padding: 4px;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+#detailviewTools {
+	padding: 4px;
+	background-color: #75D3FF;
+}
+#list {
+	position: absolute;
+	right: 0px;
+	top: 24px;
+	bottom: 0px;
+	width: 200px;
+	background-color: lightgrey;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#list > div {
+	background-color: #ddd;
+	height: 16px;
+	width: 196px;
+	margin: 0px;
+	padding: 2px;
+	font-size: 16px;
+}
+#list > div:nth-child(2n) {
+	background-color: #ccc;
+}
+#detailview {
+	background-color: #ADE5FF;
+	position: absolute;
+	top: 24px;
+	right: 200px;
+	left: 0px;
+	bottom: 0px;
+	overflow: scroll;
+}
+#toolbarMenu {
+	background-color: #eee;
+	text-align: center;
+	padding: 50px;
+	z-index: 10;
+	position: fixed;
+	top: 24px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+.hidden {
+	visibility: hidden;
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
+.Calendar_Data {
+	background-color: #090;
+}

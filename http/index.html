@@ -1,0 +1,162 @@
+<html>
+	<head>
+		<title>
+			ProjectSolar v0.3a
+		</title>
+		<meta name="autor" content="Florian Wendelborn">
+		<meta name="copyright" content="(c) 14.09.2012 by Florian Wendelborn, licensed the under CC-BY license version 3.0">
+		<link rel="stylesheet" href="./css/main2.css">
+		<link rel="stylesheet" href="./css/calendar.css">
+		<script src="http://127.0.0.1:8080/socket.io/socket.io.js"></script>
+		<script src="./js/main.js" type="application/x-javascript"></script>
+		<script src="./js/calendar.js" type="application/x-javascript"></script>
+		<script src="./js/math.js" type="application/x-javascript"></script>
+		
+		<script src="./js/d3.min.js"></script>
+		<script src="./js/d3.layout.min.js"></script>
+		<script src="./js/rickshaw.min.js"></script>
+		<link rel="stylesheet" href="./css/graph.css" />
+		
+		<script>
+			var socket;
+		</script>
+	</head>
+	<body>
+		<div id="toolbar">
+			<div class="toolbarItem" id="toolbar_choose" onclick="openToolbarMenu(this)">
+				<img src="./png/icons/calendar_view_day.png" title="View Date" />
+			</div>
+			<div class="toolbarItem" id="toolbar_about" onclick="openToolbarMenu(this)" style="position: fixed;top:0px;right:0px;">
+				<img src="./png/icons/report_user.png" title="About ProjectSolar" />
+			</div>
+			<div class="toolbarItem" id="toolbar_admin" onclick="openToolbarMenu(this)" style="position: fixed;top:0px;right:24px;">
+				<img src="./png/icons/wrench.png" title="Admin Section" />
+			</div>
+		</div>
+		<div id="toolbarMenu" class="hidden">
+			<div id="toolbarMenu_admin" class="hidden">
+				<form action="javascript: adminLogin()">
+					<input type="password" value="admin" id="adminLoginPassword">
+					<input type="submit">
+				</form>
+			</div>
+			<div id="toolbarMenu_about" class="hidden">
+				<h3>
+					ProjectSolar v0.3a
+				</h3>
+				by Florian Wendelborn<br>
+				Project started: 14.09.2012<br>
+				Written in <a href="http://www.nodejs.org/">Node.js</a> &and; Javascript<br>
+				Using HTML5 &and; CSS 3<br>
+				Database used: CouchDB<br>
+				Node.js-Librarys used: <a href="http://www.socket.io/">Socket.IO</a>, Nano<br>
+				Icon-Pack used: <a href="http://www.famfamfam.com/lab/icons/silk/">FamFamFam Silk Icons</a><br>
+				Editor used: Sublime Text 2<br>
+				This project is using Rickshaw
+			</div>
+			<div id="toolbarMenu_choose" class="hidden">
+				Please choose a day:<br>
+				<div id="chooseDayCalendar" style="margin-left: auto; margin-right: auto;"></div>
+				<div id="chooseDayLegend" style="text-align: left;">
+					<div style="background-color: green;height:16px;width:16px;border:1px solid #000;margin-right: 10px;float:left;">
+					</div>
+					<span>
+						Data available
+					</span>
+				</div>
+			</div>
+		</div>
+		<div id="bottomBar">
+			<div id="list"></div>
+			<div id="sidebarLeft">
+				<form action="#">
+					<fieldset>
+						<legend>
+							Module 1
+						</legend>
+						<input type="checkbox" checked="checked" onclick="updateMode('module1Watt')"> watt per time
+					</fieldset>
+					<fieldset>
+						<legend>
+							Module 2
+						</legend>
+						<input type="checkbox" onclick="updateMode('module2Watt')"> watt per time
+					</fieldset>
+					<fieldset>
+						<legend>
+							Module 3
+						</legend>
+						<input type="checkbox" onclick="updateMode('module3Watt')"> watt per time
+					</fieldset>
+					<fieldset>
+						<legend>
+							Sensors
+						</legend>
+						<input type="checkbox" onclick="updateMode('sensorSolarWatt')"> watt per time
+					</fieldset>
+				</form>
+			</div>
+			<div>
+				<form action="#">
+					<fieldset id="fieldsetGeneralInformation">
+						<legend>
+							general Information
+						</legend>
+						<table class="borderedTable">
+							<tr>
+								<td>
+									kWh produced (All Modules):
+								</td>
+								<td>
+									<span id="generalKWHProduced"></span> kWh
+								</td>
+							</tr>
+							<tr>
+								<td>
+									kWh produced (Module 1):
+								</td>
+								<td>
+									<span id="generalKWHProduced1"></span> kWh
+								</td>
+							</tr>
+							<tr>
+								<td>
+									kWh produced (Module 2):
+								</td>
+								<td>
+									<span id="generalKWHProduced2"></span> kWh
+								</td>
+							</tr>
+							<tr>
+								<td>
+									kWh produced (Module 3):
+								</td>
+								<td>
+									<span id="generalKWHProduced3"></span> kWh
+								</td>
+							</tr>
+						</table>
+						<table class="borderedTable">
+							<tr>
+								<td>
+									energy produced (time - all Modules):
+								</td>
+								<td>
+									<span id="generalOperationTime"></span>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div id="detailviewHeading">
+			SolarData from the <span id="detailview_heading"></span> of <span id="detailview_heading_month"></span> <span id="detailview_heading_year"></span>
+		</div>
+		<div id="detailview">
+			<div id="graph">
+
+			</div>
+		</div>
+	</body>
+</html>

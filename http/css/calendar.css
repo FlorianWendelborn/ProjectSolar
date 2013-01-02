@@ -1,0 +1,47 @@
+.Calendar {
+	box-shadow: 0px 0px 20px black;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	width: 240px;
+	border-radius: 10px;
+}
+.Calendar > div:nth-child(1) {
+	height: 32px;
+}
+.Calendar > div:nth-child(1) > div {
+	height: 16px;
+	width: 16px;
+	padding: 8px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#000));
+}
+.Calendar > div:nth-child(1) > div:nth-child(1) {
+	float: left;
+	border-radius: 10px 0px 0px 0px;
+}
+.Calendar > div:nth-child(1) > div:nth-child(2) {
+	float: left;
+	width: 160px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	text-align: center;
+	font-size: 16px;
+}
+.Calendar > div:nth-child(1) > div:nth-child(3) {
+	float: right;
+	border-radius: 0px 10px 0px 0px;
+}
+.Calendar > table, .Calendar > table > tr, .Calendar > table > tr > td {
+	padding: 0px;
+	margin: 0px;
+}
+.Calendar > table {
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+	border-radius: 0px 0px 10px 10px
+}
+.Calendar > table > tr > td {
+	width: 32px!important;
+	min-width: 32px!important;
+	max-width: 32px!important;
+}
